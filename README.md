@@ -11,7 +11,22 @@ This project is the evolution of [\[2\]](#references).
 
 ## Contents
 
+* [Development Goals](#development-goals)
 * [References](#references)
+
+## Development Goals
+
+#### New Configuration Files
+
+Implementing a new format in the configuration files will provide more control of the code to the techniques. In addition, the code will be cleaner, once fewer exceptions need to be added.
+
+#### New Input Files
+
+Add capacity of receiving only a disassembly or a binary file as input. By getting directly from the binary file, we don't need to worry that much with the assembler.
+
+#### Script for Techniques
+
+SIHFT techniques don't need to be hard code in the tool. They can be loaded from script files.
 
 ## References
 [1] O. Goloubeva et al., "Software-Implemented Hardware Fault Tolerance," Boston, MA: Springer Sci.+Bus. Media, LLC, 2006.
