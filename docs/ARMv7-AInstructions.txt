@@ -1,0 +1,5143 @@
+﻿/*
+ARM instructions
+ARMv7-A Architecture
+Tested on ARM Cortex-A9 processor
+*/
+
+
+/*
+Add
+D = A + B, D = A + #const
+The contents of general-purpose register rA are added to the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction add {
+        name = add
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction adds {
+        name = adds
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction addi {
+        name = add
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d        
+}
+Instruction addis {
+        name = adds
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d        
+}
+/* end of example */
+
+
+/*
+Add with carry
+D = A + B, D = A + #const
+The contents of general-purpose register rA are added to the contents of general-purpose register rB (our #constant) together with the carry flag to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction adc {
+        name = adc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction adcs {
+        name = adcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction adci {
+        name = adc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction adcis {
+        name = adcs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Sub
+D = A - B, D = A - #const
+The contents of general-purpose register rA are subtracted by the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+
+
+*/
+Instruction sub {
+        name = sub
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction subs {
+        name = subs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction subi {
+        name = sub
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction subis {
+        name = subs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Reverse sub
+D = A - B, D = A - #const
+The contents of general-purpose register rB are subtracted by the contents of general-purpose register rA (our #constant) to form the result. The result is placed into general-purpose register rD.
+*/
+Instruction rsb {
+        name = rsb
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction rsbs {
+        name = rsbs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction rsbi {
+        name = rsb
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction rsbis {
+        name = rsbs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Sub with carry
+D = A - B, D = A - #const
+The contents of general-purpose register rA are subtracted by the contents of general-purpose register rB (our #constant) to form the result. If the carry flag is clear, the result is reduced by one. The result is placed into general-purpose register rD. 
+*/
+Instruction sbc {
+        name = sbc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction sbcs {
+        name = sbcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction sbci {
+        name = sbc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction sbcis {
+        name = sbcs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Reverse sub with carry
+
+
+D = A - B, D = A - #const
+The contents of general-purpose register rB are subtracted by the contents of general-purpose register rA (our #constant) to form the result. If the carry flag is clear, the result is reduced by one. The result is placed into general-purpose register rD.
+*/
+Instruction rsc {
+        name = rsc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction rscs {
+        name = rscs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction rsci {
+        name = rsc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction rscis {
+        name = rscs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/****/
+/*
+And
+D = A AND B, D = A AND #const
+The contents of general-purpose register rA are subject to a logical AND operation with the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction and {
+        name = and
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction ands {
+        name = ands
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction andi {
+        name = and
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction andis {
+        name = ands
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction andeq {
+        name = andeq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andne {
+        name = andne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andcs {
+        name = andcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andhs {
+        name = andhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andcc {
+        name = andcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction andlo {
+        name = andlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andmi {
+        name = andmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andpl {
+        name = andpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andvs {
+        name = andvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andvc {
+        name = andvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andhi {
+        name = andhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andls {
+        name = andls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andge {
+        name = andge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andlt {
+        name = andlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction andgt {
+        name = andgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction andle {
+        name = andle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+
+
+/*
+Orr
+D = A OR B, D = A OR #const
+The contents of general-purpose register rA are subject to a logical OR operation with the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction orr {
+        name = orr
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrs {
+        name = orrs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction orri {
+        name = orr
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction orris {
+        name = orrs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction orreq {
+        name = orreq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrne {
+        name = orrne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrcs {
+        name = orrcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrhs {
+        name = orrhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrcc {
+        name = orrcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrlo {
+        name = orrlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrmi {
+        name = orrmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrpl {
+        name = orrpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrvs {
+        name = orrvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrvc {
+        name = orrvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrhi {
+        name = orrhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrls {
+        name = orrls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrge {
+        name = orrge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrlt {
+        name = orrlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrgt {
+        name = orrgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction orrle {
+        name = orrle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+/*
+Eor
+D = A XOR B, D = A XOR #const
+The contents of general-purpose register rA are subject to a logical XOR operation with the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction eor {
+        name = eor
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction eors {
+        name = eors
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction eori {
+        name = eor
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction eoris {
+        name = eors
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction eoreq {
+        name = eoreq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorne {
+        name = eorne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorcs {
+        name = eorcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorhs {
+        name = eorhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorcc {
+        name = eorcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorlo {
+        name = eorlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eormi {
+        name = eormi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorpl {
+        name = eorpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorvs {
+        name = eorvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorvc {
+        name = eorvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorhi {
+        name = eorhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorls {
+        name = eorls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorge {
+        name = eorge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorlt {
+        name = eorlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorgt {
+        name = eorgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction eorle {
+        name = eorle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+
+
+/*
+Bic
+D = A NAND B, D = A NAND #const
+The contents of general-purpose register rA are subject to a logical NAND operation with the contents of general-purpose register rB (our #constant) to form the result. The result is placed into general-purpose register rD. If S is specified, these instructions update the N, Z, C and V flags according to the result.
+*/
+Instruction bic {
+        name = bic
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction bics {
+        name = bics
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a, b
+        destRegs = d
+}
+Instruction bici {
+        name = bic
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction bicis {
+        name = bics
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction biceq {
+        name = biceq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicne {
+        name = bicne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction biccs {
+        name = biccs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bichs {
+        name = bichs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction biccc {
+        name = biccc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction biclo {
+        name = biclo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicmi {
+        name = bicmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicpl {
+        name = bicpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicvs {
+        name = bicvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicvc {
+        name = bicvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bichi {
+        name = bichi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicls {
+        name = bicls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicge {
+        name = bicge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction biclt {
+        name = biclt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicgt {
+        name = bicgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+Instruction bicle {
+        name = bicle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a, b
+        destRegs = d
+}
+
+
+/*
+Clz
+Counts the number of leading zeros in the value in rA and returns the result in rD. The result value is 32 if no bits are set in the source register, and zero if bit 31 is set.
+
+
+*/
+Instruction clz {
+        name = clz
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction clzeq {
+        name = clzeq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzne {
+        name = clzne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzcs {
+        name = clzcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzhs {
+        name = clzhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzcc {
+        name = clzcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction clzlo {
+        name = clzlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzmi {
+        name = clzmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzpl {
+        name = clzpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzvs {
+        name = clzvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzvc {
+        name = clzvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzhi {
+        name = clzhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzls {
+        name = clzls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzge {
+        name = clzge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzlt {
+        name = clzlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction clzgt {
+        name = clzgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction clzle {
+        name = clzle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Cmp
+Compare the value in a register with rB. They update the condition flags on the result, but do not place the result in any register. Subtracts the value of rB from the value in rA. This is the same as a SUBS instruction, except that the result is discarded.
+*/
+Instruction cmp {
+        name = cmp
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = //
+}
+
+
+Instruction cmpi{
+        name = cmp
+        format = ins a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = //
+}
+Instruction cmpeq {
+        name = cmpeq
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpne {
+        name = cmpne
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpcs {
+        name = cmpcs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmphs {
+        name = cmphs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpcc {
+        name = cmpcc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = //
+}
+Instruction cmplo {
+        name = cmplo
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpmi {
+        name = cmpmi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmppl {
+        name = cmppl
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpvs {
+        name = cmpvs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpvc {
+        name = cmpvc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmphi {
+        name = cmphi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpls {
+        name = cmpls
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmpge {
+        name = cmpge
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmplt {
+        name = cmplt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = //
+}
+Instruction cmpgt {
+        name = cmpgt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmple {
+        name = cmple
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+
+
+/*
+Cmn
+Compare the value in a register with rB. They update the condition flags on the result, but do not place the result in any register. Adds the value of rB to the value in rA. This is the same as an ADDS instruction, except that the result is discarded.
+*/
+Instruction cmn {
+        name = cmn
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = //
+}
+
+
+Instruction cmni{
+        name = cmn
+        format = ins a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = //
+}
+Instruction cmneq {
+        name = cmneq
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnne {
+        name = cmnne
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmncs {
+        name = cmncs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnhs {
+        name = cmnhs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmncc {
+        name = cmncc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = //
+}
+Instruction cmnlo {
+        name = cmnlo
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnmi {
+        name = cmnmi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnpl {
+        name = cmnpl
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnvs {
+        name = cmnvs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnvc {
+        name = cmnvc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnhi {
+        name = cmnhi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnls {
+        name = cmnls
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnge {
+        name = cmnge
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnlt {
+        name = cmnlt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = //
+}
+Instruction cmngt {
+        name = cmngt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+Instruction cmnle {
+        name = cmnle
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = //
+}
+
+
+
+
+
+
+
+
+
+
+/*
+Mov
+D = A, D = #const
+The contents of general-purpose register rA (our #constant) are copied to the general-purpose register rD.
+*/
+Instruction mov {
+        name = mov
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction movi {
+        name = mov
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = //
+        destRegs = d
+}
+Instruction moveq {
+        name = moveq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movne {
+        name = movne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movcs {
+        name = movcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movhs {
+        name = movhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movcc {
+        name = movcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction movlo {
+        name = movlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movmi {
+        name = movmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movpl {
+        name = movpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movvs {
+        name = movvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movvc {
+        name = movvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movhi {
+        name = movhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movls {
+        name = movls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movge {
+        name = movge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movlt {
+        name = movlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction movgt {
+        name = movgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction movle {
+        name = movle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Mov not
+D = !A, D = !#const
+The contents of the bit-wise logical NOT general-purpose register rA (our #constant) are copied to the general-purpose register rD.
+*/
+Instruction mvn {
+        name = mvn
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = d
+}
+Instruction mvni {
+        name = mvn
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = //
+        destRegs = d
+}
+
+
+Instruction mvneq {
+        name = mvneq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnne {
+        name = mvnne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvncs {
+        name = mvncs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnhs {
+        name = mvnhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvncc {
+        name = mvncc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction mvnlo {
+        name = mvnlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnmi {
+        name = mvnmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnpl {
+        name = mvnpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnvs {
+        name = mvnvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnvc {
+        name = mvnvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnhi {
+        name = mvnhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnls {
+        name = mvnls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnge {
+        name = mvnge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnlt {
+        name = mvnlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction mvngt {
+        name = mvngt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction mvnle {
+        name = mvnle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+/*
+Mov wide
+D = #const (16 bit)
+The contents of a 16-bit immediate value are copied to the general-purpose register rD[0:15]. The contents of  rD[31:16] are zeroed.
+*/
+Instruction movw {
+        name = movw
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = //
+        destRegs = d
+}
+
+
+
+
+/*
+Mov top
+D = #const (16 bit)
+The contents of a 16-bit immediate value are copied to the general-purpose register rD[31:16]. The contents of  rD[0:15] are not affected.
+*/
+Instruction movt {
+        name = movt
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = //
+        destRegs = d
+}
+Instruction movteq {
+        name = movteq
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtne {
+        name = movtne
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtcs {
+        name = movtcs
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movths {
+        name = movths
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtcc {
+        name = movtcc
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = d
+}
+Instruction movtlo {
+        name = movtlo
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtmi {
+        name = movtmi
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtpl {
+        name = movtpl
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtvs {
+        name = movtvs
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtvc {
+        name = movtvc
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movthi {
+        name = movthi
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtls {
+        name = movtls
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtge {
+        name = movtge
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtlt {
+        name = movtlt
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = d
+}
+Instruction movtgt {
+        name = movtgt
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction movtle {
+        name = movtle
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+/*
+Tst
+Performs a bitwise AND operation on the value in rA and the value of rB(or #constant). This is the same as an ANDS instruction, except that the result is discarded. Update the condition flags on the result, but do not place the result in any register.
+*/
+Instruction tst {
+        name = tst
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = //
+}
+
+
+Instruction tsti{
+        name = tst
+        format = ins a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = //
+}
+Instruction tsteq {
+        name = tsteq
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstne {
+        name = tstne
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstcs {
+        name = tstcs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tsths {
+        name = tsths
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstcc {
+        name = tstcc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstlo {
+        name = tstlo
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstmi {
+        name = tstmi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstpl {
+        name = tstpl
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstvs {
+        name = tstvs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstvc {
+        name = tstvc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tsthi {
+        name = tsthi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstls {
+        name = tstls
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstge {
+        name = tstge
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstlt {
+        name = tstlt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstgt {
+        name = tstgt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction tstle {
+        name = tstle
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+/*
+Teq
+Performs a bitwise XOR operation on the value in rA and the value of rB(or #constant). This is the same as an EORS instruction, except that the result is discarded. Update the condition flags on the result, but do not place the result in any register.
+*/
+Instruction teq {
+        name = teq
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = //
+}
+
+
+Instruction teqi{
+        name = teq
+        format = ins a,i
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a
+        destRegs = //
+}
+Instruction teqeq {
+        name = teqeq
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqne {
+        name = teqne
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqcs {
+        name = teqcs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqhs {
+        name = teqhs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqcc {
+        name = teqcc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqlo {
+        name = teqlo
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqmi {
+        name = teqmi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqpl {
+        name = teqpl
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqvs {
+        name = teqvs
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqvc {
+        name = teqvc
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqhi {
+        name = teqhi
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqls {
+        name = teqls
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqge {
+        name = teqge
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqlt {
+        name = teqlt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqgt {
+        name = teqgt
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+Instruction teqle {
+        name = teqle
+        format = ins a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = //
+}
+/*
+Sel
+D = sel(A,B)
+Select bits from each operand according to the state of the APSR GE flags. The result is stored in rD. The first operand is rA and the second rB.
+The SEL instruction selects bytes from Rn or Rm according to the APSR GE flags:
+* if GE[0] is set, rD[7:0] come from rA[7:0], otherwise from rB[7:0]
+* if GE[1] is set, rD[15:8] come from rA[15:8], otherwise from rB[15:8]
+* if GE[2] is set, rD[23:16] come from rA[23:16], otherwise from rB[23:16]
+* if GE[3] is set, rD[31:24] come from rA[31:24], otherwise from rB[31:24].
+*/
+Instruction sel {
+        name = sel
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction seleq {
+        name = seleq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selne {
+        name = selne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selcs {
+        name = selcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selhs {
+        name = selhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selcc {
+        name = selcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction sello {
+        name = sello
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selmi {
+        name = selmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selpl {
+        name = selpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selvs {
+        name = selvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selvc {
+        name = selvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selhi {
+        name = selhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sells {
+        name = sells
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selge {
+        name = selge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sellt {
+        name = sellt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction selgt {
+        name = selgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction selle {
+        name = selle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Rev
+Reverse byte order in a word.
+*/
+Instruction rev {
+        name = rev
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction reveq {
+        name = reveq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revne {
+        name = revne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revcs {
+        name = revcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revhs {
+        name = revhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revcc {
+        name = revcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction revlo {
+        name = revlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revmi {
+        name = revmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revpl {
+        name = revpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revvs {
+        name = revvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revvc {
+        name = revvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revhi {
+        name = revhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revls {
+        name = revls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revge {
+        name = revge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revlt {
+        name = revlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction revgt {
+        name = revgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revle {
+        name = revle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+/*
+Rev16
+Reverse byte order in each halfword independently.
+*/
+Instruction rev16 {
+        name = rev16
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Revsh
+Reverse byte order in the bottom halfword, and sign extend to 32 bits.
+*/
+Instruction revsh {
+        name = revsh
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revsheq {
+        name = revsheq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshne {
+        name = revshne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshcs {
+        name = revshcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshhs {
+        name = revshhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshcc {
+        name = revshcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction revshlo {
+        name = revshlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshmi {
+        name = revshmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshpl {
+        name = revshpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshvs {
+        name = revshvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshvc {
+        name = revshvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshhi {
+        name = revshhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshls {
+        name = revshls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshge {
+        name = revshge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshlt {
+        name = revshlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction revshgt {
+        name = revshgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction revshle {
+        name = revshle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+/*
+Rbit
+Reverse the bit order in a 32-bit word.
+*/
+Instruction rbit {
+        name = rbit
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbiteq {
+        name = rbiteq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitne {
+        name = rbitne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitcs {
+        name = rbitcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbiths {
+        name = rbiths
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitcc {
+        name = rbitcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction rbitlo {
+        name = rbitlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitmi {
+        name = rbitmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitpl {
+        name = rbitpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitvs {
+        name = rbitvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitvc {
+        name = rbitvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbithi {
+        name = rbithi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitls {
+        name = rbitls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitge {
+        name = rbitge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitlt {
+        name = rbitlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction rbitgt {
+        name = rbitgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rbitle {
+        name = rbitle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+/*
+Asr
+Arithmetic shift right. rD is the destination register. The operand is held by rA (this operand is shifted right). The register rB holds  a shift value to apply to the value in rA. Only the least significant byte is used. If S is specified, these instructions update the N and Z flags according to the result. The C flag is unaffected if the shift value is 0. Otherwise, the C flag is updated to the last bit shifted out.
+*/
+Instruction asr {
+        name = asr
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrs {
+        name = asrs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asreq {
+        name = asreq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrne {
+        name = asrne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrcs {
+        name = asrcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrhs {
+        name = asrhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrcc {
+        name = asrcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrlo {
+        name = asrlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrmi {
+        name = asrmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrpl {
+        name = asrpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrvs {
+        name = asrvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrvc {
+        name = asrvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrhi {
+        name = asrhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrls {
+        name = asrls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrge {
+        name = asrge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrlt {
+        name = asrlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrgt {
+        name = asrgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction asrle {
+        name = asrle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Lsl
+Logical shift left. rD is the destination register. The operand is held by rA (this operand is shifted right). The register rB holds  a shift value to apply to the value in rA. Only the least significant byte is used. If S is specified, these instructions update the N and Z flags according to the result. The C flag is unaffected if the shift value is 0. Otherwise, the C flag is updated to the last bit shifted out.
+*/
+Instruction lsl {
+        name = lsl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsls {
+        name = lsls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsleq {
+        name = lsleq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslne {
+        name = lslne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslcs {
+        name = lslcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslhs {
+        name = lslhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslcc {
+        name = lslcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsllo {
+        name = lsllo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslmi {
+        name = lslmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslpl {
+        name = lslpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslvs {
+        name = lslvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslvc {
+        name = lslvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslhi {
+        name = lslhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslls {
+        name = lslls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslge {
+        name = lslge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsllt {
+        name = lsllt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslgt {
+        name = lslgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lslle {
+        name = lslle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Lsr
+Logical shift right. rD is the destination register. The operand is held by rA (this operand is shifted right). The register rB holds  a shift value to apply to the value in rA. Only the least significant byte is used. If S is specified, these instructions update the N and Z flags according to the result. The C flag is unaffected if the shift value is 0. Otherwise, the C flag is updated to the last bit shifted out.
+*/
+Instruction lsr {
+        name = lsr
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrs {
+        name = lsrs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsreq {
+        name = lsreq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrne {
+        name = lsrne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrcs {
+        name = lsrcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrhs {
+        name = lsrhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrcc {
+        name = lsrcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrlo {
+        name = lsrlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrmi {
+        name = lsrmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrpl {
+        name = lsrpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrvs {
+        name = lsrvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrvc {
+        name = lsrvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrhi {
+        name = lsrhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrls {
+        name = lsrls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrge {
+        name = lsrge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrlt {
+        name = lsrlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrgt {
+        name = lsrgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction lsrle {
+        name = lsrle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Ror
+Rotate Right. rD is the destination register. The operand is held by rA (this operand is shifted right). The register rB holds  a shift value to apply to the value in rA. Only the least significant byte is used. If S is specified, these instructions update the N and Z flags according to the result. The C flag is unaffected if the shift value is 0. Otherwise, the C flag is updated to the last bit shifted out.
+*/
+Instruction ror {
+        name = ror
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rors {
+        name = rors
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction roreq {
+        name = roreq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorne {
+        name = rorne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorcs {
+        name = rorcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorhs {
+        name = rorhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorcc {
+        name = rorcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorlo {
+        name = rorlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rormi {
+        name = rormi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorpl {
+        name = rorpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorvs {
+        name = rorvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorvc {
+        name = rorvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorhi {
+        name = rorhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorls {
+        name = rorls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorge {
+        name = rorge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorlt {
+        name = rorlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorgt {
+        name = rorgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction rorle {
+        name = rorle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Rrx
+Rotate Right with extend. rD is the destination register. The operand is held by rA (this operand is shifted right). Only the least significant byte is used. If S is specified, these instructions update the N and Z flags according to the result. The C flag is unaffected if the shift value is 0. Otherwise, the C flag is updated to the last bit shifted out.
+*/
+Instruction rrx {
+        name = rrx
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxs {
+        name = rrxs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxeq {
+        name = rrxeq
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxne {
+        name = rrxne
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxcs {
+        name = rrxcs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxhs {
+        name = rrxhs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxcc {
+        name = rrxcc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction rrxlo {
+        name = rrxlo
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxmi {
+        name = rrxmi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxpl {
+        name = rrxpl
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxvs {
+        name = rrxvs
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxvc {
+        name = rrxvc
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxhi {
+        name = rrxhi
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxls {
+        name = rrxls
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxge {
+        name = rrxge
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxlt {
+        name = rrxlt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction rrxgt {
+        name = rrxgt
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction rrxle {
+        name = rrxle
+        format = ins d,a
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+/*
+Sdiv
+D = A / B
+Divides the values from general-purpose register rA and general-purpose register rB, and places the result in rD.
+*/
+Instruction sdiv {
+        name = sdiv
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdiveq {
+        name = sdiveq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivne {
+        name = sdivne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivcs {
+        name = sdivcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivhs {
+        name = sdivhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivcc {
+        name = sdivcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivlo {
+        name = sdivlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivmi {
+        name = sdivmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivpl {
+        name = sdivpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivvs {
+        name = sdivvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivvc {
+        name = sdivvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivhi {
+        name = sdivhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivls {
+        name = sdivls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivge {
+        name = sdivge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivlt {
+        name = sdivlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivgt {
+        name = sdivgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction sdivle {
+        name = sdivle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Udiv
+D = A / B
+Divides the values from general-purpose register rA and general-purpose register rB, and places the result in rD.
+*/
+Instruction udiv {
+        name = udiv
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction udiveq {
+        name = udiveq
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivne {
+        name = udivne
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivcs {
+        name = udivcs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivhs {
+        name = udivhs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivcc {
+        name = udivcc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivlo {
+        name = udivlo
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivmi {
+        name = udivmi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivpl {
+        name = udivpl
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivvs {
+        name = udivvs
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivvc {
+        name = udivvc
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivhi {
+        name = udivhi
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivls {
+        name = udivls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivge {
+        name = udivge
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivlt {
+        name = udivlt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivgt {
+        name = udivgt
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+Instruction udivle {
+        name = udivle
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a,b
+        destRegs = d
+}
+/*
+Mul
+D = A * B
+Multiplies the values from general-purpose register rA and general-purpose register rB, and places the least significant 32 bits of the result in rD.
+*/
+Instruction mul {
+        name = mul
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+Instruction muls {
+        name = muls
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d
+}
+/*
+Multiplication with add
+D = A * B + C
+Multiplies the values from general-purpose register rA and general-purpose register rB, adds the value from general-purpose register rC, and places the least significant 32 bits of the result in rD.
+*/
+Instruction mla {
+        name = mla
+        format = ins d,a,b,c
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b,c
+        destRegs = d
+}
+Instruction mlas {
+        name = mlas
+        format = ins d,a,b,c
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b,c
+        destRegs = d
+}
+
+
+
+
+/*
+Multiplication with sub
+D = A * B + C
+Multiplies the values from general-purpose register rA and general-purpose register rB, subtracts the value from general-purpose register rC, and places the least significant 32 bits of the result in rD.
+*/
+Instruction mls {
+        name = mls
+        format = ins d,a,b,c
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b,c
+        destRegs = d
+}
+
+
+/*
+Umull
+[D1,D2] = A * B
+Unsigned long multiplication with 32-bit operands, and 64-bit result and accumulator. Multiplies the values from general-purpose register rA and general-purpose register rB, and places the least significant 32 bits of the result in rD1(low) and rD2(high). 
+*/
+Instruction umull {
+        name = umull
+        format = ins d1,d2,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d1,d2
+}
+Smull
+[D1,D2] = A * B
+Signed long multiplication with 32-bit operands, and 64-bit result and accumulator. Multiplies the values from general-purpose register rA and general-purpose register rB, and places the least significant 32 bits of the result in rD1(low) and rD2(high). 
+*/
+Instruction smull {
+        name = smull
+        format = ins d1,d2,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d1,d2
+}
+
+
+/*
+Umlal
+[D1,D2] = A * B
+Unsigned long multiplication with accumulate, with 32-bit operands, and 64-bit result and accumulator. Multiplies the values from general-purpose register rA and general-purpose register rB, and places the least significant 32 bits of the result in rD1(low) and rD2(high). rD1 and rD2 also hold the accumulating value. 
+*/
+Instruction umlal {
+        name = umlal
+        format = ins d1,d2,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d1,d2
+}
+/*
+Smlal
+[D1,D2] = A * B
+Signed long multiplication with accumulate, with 32-bit operands, and 64-bit result and accumulator. Multiplies the values from general-purpose register rA and general-purpose register rB, and places the least significant 32 bits of the result in rD1(low) and rD2(high). rD1 and rD2 also hold the accumulating value. 
+*/
+Instruction smlal {
+        name = smlal
+        format = ins d1,d2,a,b
+        disasmFormat = //…
+        binaryFormat = //
+        sourceRegs = a,b
+        destRegs = d1,d2
+}
+
+
+/*
+Branch
+PC = T
+Cause a branch to the address contained in T.
+
+
+*/
+Instruction b {
+        name = b
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction beq {
+        name = beq
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bne {
+        name = bne
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bcs {
+        name = bcs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bhs {
+        name = bhs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bcc {
+        name = bcc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blo {
+        name = blo
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bmi {
+        name = bmi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bpl {
+        name = bpl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bvs {
+        name = bvs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bvc {
+        name = bvc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bhi {
+        name = bhi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bls {
+        name = bls
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bge {
+        name = bge
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blt {
+        name = blt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bgt {
+        name = bgt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction ble {
+        name = ble
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+LR = PC + 1
+PC = T
+Branch with link
+Cause a branch to the address contained in T, and copy the address of the next instruction to r14(lr)(link register).
+*/
+
+
+Instruction bl {
+        name = bl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bleq {
+        name = bleq
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blne {
+        name = blne
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blcs {
+        name = blcs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blhs {
+        name = blhs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blcc {
+        name = blcc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bllo {
+        name = bllo
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blmi {
+        name = blmi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blpl {
+        name = blpl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blvs {
+        name = blvs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blvc {
+        name = blvc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blhi {
+        name = blhi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blls {
+        name = blls
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blge {
+        name = blge
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bllt {
+        name = bllt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blgt {
+        name = blgt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blle {
+        name = blle
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+/*
+PC = T
+Branch and exchange instruction set
+Cause a branch to the address contained in T. Changes the processor state from ARM to Thumb or from Thumb to ARM.
+* if bit[0] of T is 0, the processor changes to, or remains in, ARM state
+* if bit[0] of T is 1, the processor changes to, or remains in, Thumb state.
+*/
+
+
+Instruction bx {
+        name = bx
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxeq {
+        name = bxeq
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxne {
+        name = bxne
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxcs {
+        name = bxcs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxhs {
+        name = bxhs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxcc {
+        name = bxcc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxlo {
+        name = bxlo
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxmi {
+        name = bxmi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxpl {
+        name = bxpl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxvs {
+        name = bxvs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxvc {
+        name = bxvc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxhi {
+        name = bxhi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxls {
+        name = bxls
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxge {
+        name = bxge
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxlt {
+        name = bxlt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxgt {
+        name = bxgt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxle {
+        name = bxle
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+
+
+
+
+/*
+LR = PC + 1
+PC = T
+Branch with link and exchange instruction set
+Cause a branch to the address contained in T, and copy the address of the next instruction to r14(lr)(link register). Changes the processor state from ARM to Thumb or from Thumb to ARM.
+* if bit[0] of T is 0, the processor changes to, or remains in, ARM state
+* if bit[0] of T is 1, the processor changes to, or remains in, Thumb state.
+*/
+
+
+Instruction blx {
+        name = blx
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxeq {
+        name = blxeq
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxne {
+        name = blxne
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxcs {
+        name = blxcs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxhs {
+        name = blxhs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxcc {
+        name = blxcc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxlo {
+        name = blxlo
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxmi {
+        name = blxmi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxpl {
+        name = blxpl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxvs {
+        name = blxvs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxvc {
+        name = blxvc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxhi {
+        name = blxhi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxls {
+        name = blxls
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxge {
+        name = blxge
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxlt {
+        name = blxlt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxgt {
+        name = blxgt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction blxle {
+        name = blxle
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+
+
+
+
+/*
+PC = T
+Branch and change to Jazelle execution
+Cause a branch to the address contained in T. Changes the processor state to Jazelle.
+*/
+Instruction bxj {
+        name = bxj
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjeq {
+        name = bxjeq
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjne {
+        name = bxjne
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjcs {
+        name = bxjcs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjhs {
+        name = bxjhs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjcc {
+        name = bxjcc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjlo {
+        name = bxjlo
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjmi {
+        name = bxjmi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjpl {
+        name = bxjpl
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjvs {
+        name = bxjvs
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjvc {
+        name = bxjvc
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjhi {
+        name = bxjhi
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjls {
+        name = bxjls
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjge {
+        name = bxjge
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjlt {
+        name = bxjlt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjgt {
+        name = bxjgt
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+Instruction bxjle {
+        name = bxjle
+        format = ins t
+        disasmFormat = //…
+        binFormat = //
+        destRegs = pc
+}
+
+
+/*
+Compare and branch on zero
+PC = T
+Compare and Branch on zero.
+*/
+Instruction cbz {
+        name = cbz
+        format = ins a, t
+        disasmFormat = //…
+        binFormat = //
+sourceRegs = a
+        destRegs = pc
+}
+
+
+/*
+Compare and branch on non-zero
+PC = T
+Compare and Branch on non-zero.
+*/
+Instruction cbnz {
+        name = cbnz
+        format = ins a, t
+        disasmFormat = //…
+        binFormat = //
+sourceRegs = a
+        destRegs = pc
+}
+
+
+
+
+/*
+Table branch byte
+PC = PC + [A; B]
+Cause a pc-relative forward branch using a table of single byte offsets. rA provides a pointer to the table, and rB supplies an index into the table. The branch length is twice the value of the byte returned from the table.
+*/
+Instruction tbb {
+        name = tbb
+        format = ins a, b
+        disasmFormat = //…
+        binFormat = //
+sourceRegs = a, b
+        destRegs = pc
+}
+
+
+/*
+Table branch halfword
+PC = PC + [A; B]
+These instructions cause a pc-relative forward branch using a table of halfword offsets. rA provides a pointer to the table, and rB supplies an index into the table. The branch length is twice the value of the halfword returned from the table.
+*/
+Instruction tbh {
+        name = tbh
+        format = ins a, b
+        disasmFormat = //…
+        binFormat = //
+sourceRegs = a, b
+        destRegs = pc
+}
+
+
+/****/
+Memory Access Instructions
+/****/
+/*
+Adr
+PD = label; D = PC
+Adds an immediate value to the pc value, and writes the result to the destination register.
+
+
+*/
+Instruction adr {
+        name = adr
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adreq {
+        name = adreq
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrne {
+        name = adrne
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrcs {
+        name = adrcs
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrhs {
+        name = adrhs
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrcc {
+        name = adrcc
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = d
+}
+Instruction adrlo {
+        name = adrlo
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrmi {
+        name = adrmi
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrpl {
+        name = adrpl
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrvs {
+        name = adrvs
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrvc {
+        name = adrvc
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrhi {
+        name = adrhi
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrls {
+        name = adrls
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrge {
+        name = adrge
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrlt {
+        name = adrlt
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = d
+}
+Instruction adrgt {
+        name = adrgt
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+Instruction adrle {
+        name = adrle
+        format = ins d,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = d
+}
+/*
+Clrex
+Clear exclusive. Clears the local record of the executing processor that an address has had a request for an exclusive access.
+
+
+*/
+Instruction clrex {
+        name = clrex
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexeq {
+        name = clrexeq
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexne {
+        name = clrexne
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexcs {
+        name = clrexcs
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexhs {
+        name = clrexhs
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexcc {
+        name = clrexcc
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = //
+}
+Instruction clrexlo {
+        name = clrexlo
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexmi {
+        name = clrexmi
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexpl {
+        name = clrexpl
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexvs {
+        name = clrexvs
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexvc {
+        name = clrexvc
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexhi {
+        name = clrexhi
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexls {
+        name = clrexls
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexge {
+        name = clrexge
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexlt {
+        name = clrexlt
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = //
+        destRegs = //
+}
+Instruction clrexgt {
+        name = clrexgt
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+Instruction clrexle {
+        name = clrexle
+        format = ins 
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = //
+        destRegs = //
+}
+
+
+/*
+Swp
+Swap data between registers and memory. 32-bit words are swapped.
+
+
+*/
+Instruction swp {
+        name = swp
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpeq {
+        name = swpeq
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpne {
+        name = swpne
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpcs {
+        name = swpcs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swphs {
+        name = swphs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpcc {
+        name = swpcc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction swplo {
+        name = swplo
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpmi {
+        name = swpmi
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swppl {
+        name = swppl
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpvs {
+        name = swpvs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpvc {
+        name = swpvc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swphi {
+        name = swphi
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpls {
+        name = swpls
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpge {
+        name = swpge
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swplt {
+        name = swplt
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction swpgt {
+        name = swpgt
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swple {
+        name = swple
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Swpb
+Swap data between registers and memory. A byte is swapped.
+
+
+*/
+Instruction swpb {
+        name = swpb
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbeq {
+        name = swpbeq
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbne {
+        name = swpbne
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbcs {
+        name = swpbcs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbhs {
+        name = swpbhs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbcc {
+        name = swpbcc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction swpblo {
+        name = swpblo
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbmi {
+        name = swpbmi
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbpl {
+        name = swpbpl
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbvs {
+        name = swpbvs
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbvc {
+        name = swpbvc
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbhi {
+        name = swpbhi
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbls {
+        name = swpbls
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpbge {
+        name = swpbge
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpblt {
+        name = swpblt
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+         sourceRegs = a
+        destRegs = d
+}
+Instruction swpbgt {
+        name = swpbgt
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}
+Instruction swpble {
+        name = swpble
+        format = ins d,a,i
+        disasmFormat = //…
+        binaryFormat = //
+          sourceRegs = a
+        destRegs = d
+}

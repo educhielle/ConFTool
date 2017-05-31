@@ -1,0 +1,149 @@
+﻿Name definitions
+Bit definition
+A : first source register used as data
+B : second source register used as data
+C : third source register used as data
+D : first destination register
+E : second destination register
+F : third destination register
+G : undefined
+I : first signed immediate used as data
+J : second signed immediate used as data
+K : third signed immediate used as data
+L : first register used as a memory location
+M : second register used as a memory location
+N : third register used as a memory location
+O : first signed immediate used as an offset
+P : second signed immediate used as an offset
+Q : third signed immediate used as an offset
+R : undefined
+S : undefined
+T : target
+U : first unsigned immediate used as data
+V : second unsigned immediate used as data
+W : third unsigned immediate used as data
+X : first unsigned immediate used as an offset
+Y : second unsigned immediate used as an offset
+Z : third unsigned immediate used as an offset
+0 : bit zero
+1 : bit one
+0x0 to 0xF (0x00… to 0xFF…) : multiple of four bits expressed as a hexadecimal value
+________________
+Configuration files
+Configuration files are case insensitive
+Configuring instructions
+assembly name
+Define the assembly name of the instruction.
+name, asmName, asm_name, assemblyName, assembly_name
+disassembly name
+Define the disassembly name of the instruction.
+disasmName, disasm_name, disassemblyName, disassembly_name
+note: if not declared, it is assumed to be the same as the assembly name
+assembly format
+format, asmFormat, asm_format, assemblyFormat, assembly_format
+disassembly format
+disasmFormat, disasm_format, disassemblyFormat, disassembly_format
+binary format
+The bit definition of a instructions. Spaces are used only to determine the end of hex values. Otherwise, they are just ignored.
+binName, bin_name, binaryName, binary_name
+source registers
+sourceRegisters, sourceRegs, sRegs, source_registers, source_regs, s_regs
+destination registers
+destinationRegisters, destinationRegs, destRegs, dRegs, destination_registers, destination_regs, dest_regs, d_regs
+Comments
+Line comments
+// comments
+Block comments
+/* comments
+   more comments */
+________________
+Instruction types
+Comparing and branching
+Single instruction for comparing and branching
+Compare and Branch if Equal (cmpbeq)
+compare two registers and branch to target if they are equal
+Compare and Branch if Equal to Constant (cmpbeqk)
+compare a register with a signal-extended constant and branch to target if they are equal
+Compare and Branch if Greater than or Equal to Signed (cmpbges)
+compare two registers as signed integers and branch if the first is greater than or equal to the second
+Compare and Branch if Greater than or Equal to Constant Signed (cmpbgesk)
+compare a register as a signed integer with a signal-extended constant and branch if the register is greater than or equal to the constant
+Compare and Branch if Greater than or Equal to Unsigned (cmpbgeu)
+compare two registers as unsigned integers and branch if the first is greater than or equal to the second
+Compare and Branch if Greater than or Equal to Constant Unsigned (cmpbgeuk)
+compare a register as an unsigned integer with a signal-extended constant and branch if the register is greater than or equal to the constant
+Compare and Branch if Greater Than Signed (cmpbgts)
+compare two register as signed integers and branch if the first is greater than the second
+Compare and Branch if Greater Than Constant Signed (cmpbgtsk)
+compare a register as a signed integer with a signal-extended constant and branch if the register is greater than the constant
+Compare and Branch if Greater Than Unsigned (cmpbgtu)
+compare two register as unsigned integers and branch if the first is greater than the second
+Compare and Branch if Greater Than Constant Unsigned (cmpbgtuk)
+compare a register as an unsigned integer with a signal-extended constant and branch if the register is greater than the constant
+Compare and Branch if Less than or Equal to Signed (cmpbles)
+compare two registers as signed integers and branch if the first is less than or equal to the second
+Compare and Branch if Less than or Equal to Constant Signed (cmpblesk)
+compare a register as a signed integer with a signal-extended constant and branch if the register is less than or equal to the constant
+Compare and Branch if Less than or Equal to Unsigned (cmpbleu)
+compare two registers as unsigned integers and branch if the first is less than or equal to the second
+Compare and Branch if Less than or Equal to Constant Unsigned (cmpbleuk)
+compare a register as an unsigned integer with a signal-extended constant and branch if the register is less than or equal to the constant
+Compare and Branch if Less Than Signed (cmpblts)
+compare two registers as signed integers and branch if the first is less than the second
+Compare and Branch if Less Than Constant Signed (cmpbltsk)
+compare a register as a signed integer with a signal-extended constant and branch if the register is less than the constant
+Compare and Branch if Less Than Unsigned (cmpbltu)
+compare two registers as unsigned integers and branch if the first is less than the second
+Compare and Branch if Less Than Constant Unsigned (cmpbltuk)
+compare a register as an unsigned integer with a signal-extended constant and branch if the register is less than the constant
+Compare and Branch if Not Equal (cmpbne)
+compare two registers and branch if they are not equal
+Compare and Branch if Not Equal to Constant (cmpbnek)
+compare a register with a signal-extended constant and branch if they are not equal
+Single instruction for comparison, multiple instructions for branching
+Compare (cmp)
+Compare with immediate (cmpi)
+Branch if Equal (beq)
+Branch if Greater than or Equal to Signed (bges)
+Branch if Greater than or Equal to Unsigned (bgeu)
+Branch if Greater Than Signed (bgts)
+Branch if Greater Than Unsigned (bgtu)
+Branch if Less than or Equal to Signed (bles)
+Branch if Less than or Equal to Unsigned (bleu)
+Branch if Less Than Signed (blts)
+Branch if Less Than Unsigned (bltu)
+Branch if Not Equal (bne)
+Single instruction for comparison per sign, multiple instructions for branching
+Compare Signed (cmps)
+Compare Signed with Immediate (cmpsi)
+Compare Unsigned (cmpu)
+Compare Unsigned with Immediate (cmpui)
+Branch if Equal (beq)
+Branch if Greater than or Equal to (bge)
+Branch if Greater Than (bgt)
+Branch if Less than or Equal to (ble)
+Branch if Less Than (blt)
+Branch if Not Equal (bne)
+Multiple instructions for comparison, single instruction for branching
+Branch if Flag (bf)
+Branch if Not Flag (bnf)
+Set Flag if Equal (sfeq)
+Set Flag if Equal Immediate (sfeqi)
+Set Flag if Greater or Equal Than Signed (sfges)
+Set Flag if Greater or Equal Than Immediate Signed (sfgesi)
+Set Flag if Greater or Equal Than Unsigned (sfgeu)
+Set Flag if Greater or Equal Than Immediate Unsigned (sfgeui)
+Set Flag if Greater Than Signed (sfgts)
+Set Flag if Greater Than Immediate Signed (sfgtsi)
+Set Flag if Greater Than Unsigned (sfgtu)
+Set Flag if Greater Than Immediate Unsigned (sfgtui)
+Set Flag if Less or Equal Than Signed (sfles)
+Set Flag if Less or Equal Than Immediate Signed (sflesi)
+Set Flag if Less or Equal Than Unsigned (sfleu)
+Set Flag if Less or Equal Than Immediate Unsigned (sfleui)
+Set Flag if Less Than Signed (sflts)
+Set Flag if Less Than Immediate Signed (sfltsi)
+Set Flag if Less Than Unsigned (sfltu)
+Set Flag if Less Than Immediate Unsigned (sfltui)
+Set Flag if Not Equal (sfne)
+Set Flag if Not Equal Immediate (sfnei)

@@ -1,0 +1,1327 @@
+﻿/*
+openRISC Instructions
+OpenRISC 1000 Architecture
+Tested on or1200 and mor1kx processors
+*/
+
+
+/*
+Add
+D = A + B
+The contents of general-purpose register rA are added to the contents of general-purpose register rB to form the result. The result is placed into general-purpose register rD.
+The instruction will set the carry flag on unsigned overflow, and the overflow flag on signed overflow.
+*/
+Instruction add {
+        name = l.add
+        format = ins d,a,b
+        disasmFormat = //…
+        binaryFormat = 111000 DDDDD AAAAA BBBBB -00----0000
+        sourceRegs = a,b
+        destRegs = d(UA),carry(UA),overflow(UA)
+}
+
+
+/*
+Add and Carry
+D = A + B + carry
+The contents of general-purpose register rA are added to the contents of general-purpose register rB and carry SR[CY] to form the result. The result is placed into general-purpose register rD.
+The instruction will set the carry flag on unsigned overflow, and the overflow flag on signed overflow.
+*/
+Instruction addc {
+        name = l.addc
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -00----0001
+        sourceRegs = a,b,carry
+        destRegs = d,carry,overflow
+}
+
+
+/*
+Add Immediate
+D = A + I
+The immediate value is sign-extended and added to the contents of general-purpose register rA to form the result. The result is placed into general-purpose register rD.
+The instruction will set the carry flag on unsigned overflow, and the overflow flag on signed overflow.
+*/
+Instruction addi {
+        name = l.addi
+        format = ins d,a,i
+        disasmFormat = //…
+        binFormat = 100111 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = d,carry,overflow
+}
+
+
+/*
+Add Immediate and Carry
+D = A + I + carry
+The immediate value is sign-extended and added to the contents of general-purpose register rA and carry SR[CY] to form the result. The result is placed into general-purpose register rD.
+The instruction will set the carry flag on unsigned overflow, and the overflow flag on signed overflow.
+*/
+Instruction addic {
+        name = l.addic
+        format = ins d,a,i
+        disasmFormat = //…
+        binFormat = 101000 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a,carry
+        destRegs = d,carry,overflow
+}
+
+
+/*
+And
+D = A && B
+The contents of general-purpose register rA are combined with the contents of general-purpose register rB in a bit-wise logical AND operation. The result is placed into general-purpose register rD.
+*/
+Instruction and {
+        name = l.and
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -00----0011
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+And with Immediate Half Word
+D = A && U
+The immediate value is zero-extended and combined with the contents of general-purpose register rA in a bit-wise logical AND operation. The result is placed into general-purpose register rD.
+*/
+Instruction andu {
+        name = l.andi
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101001 DDDDD AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Branch if Flag
+if (flag) PC = target
+The immediate value is shifted left two bits, sign-extended to program counter width, and then added to the address of the branch instruction. The result is the effective address of the branch. If the flag is set, the program branches to EA. If CPUCFGR[ND] is not set, the branch occurs with a delay of one instruction.
+*/
+Instruction bf {
+        name = l.bf
+        format = ins t
+        disasmFormat = //…
+        binFormat = 000100 TTTTTTTTTTTTTTTTTTTTTTTTTT
+        destRegs = pc
+}
+
+
+/*
+Branch if Not Flag
+if (flag) PC = target
+The immediate value is shifted left two bits, sign-extended to program counter width, and then added to the address of the branch instruction. The result is the effective address of the branch. If the flag is cleared, the program branches to EA. If CPUCFGR[ND] is not set, the branch occurs with a delay of one instruction.
+*/
+Instruction bnf {
+        name = l.bnf
+        format = ins t
+        disasmFormat = //…
+        binFormat = 000011 TTTTTTTTTTTTTTTTTTTTTTTTTT
+        destRegs = pc
+}
+
+
+/*
+Conditional Move
+D = ( flag ? A : B )
+If SR[F] is set, general-purpose register rA is placed in general-purpose register rD. If SR[F] is cleared, general-purpose register rB is placed in general-purpose register rD.
+*/
+Instruction cmov {
+        name = l.cmov
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -00----1110
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Context Synchronization
+Execution of context synchronization instruction results in completion of all operations inside the processor and a flush of the instruction pipelines. When all operations are complete, the RISC core resumes with an empty instruction pipeline and fresh context in all units (MMU for example).
+*/
+Instruction csync {
+        name = l.csync
+        format = ins
+        disasmFormat = //…
+        binFormat = 0x23000000
+}
+
+
+/*
+Divide Signed
+D = A / B
+The content of general-purpose register rA are divided by the content of general-purpose register rB, and the result is placed into general-purpose register rD. Both operands are treated as signed integers.
+On divide-by zero, rD will be undefined, and the overflow flag will be set. Note that prior revisions of the manual (pre-2011) stored the divide by zero flag in SR[CY].
+*/
+Instruction div {
+        name = l.div
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -11----1001
+        sourceRegs = a,b
+        destRegs = d,overflow
+}
+
+
+
+
+/*
+Divide Unsigned
+D = A / B
+The content of general-purpose register rA are divided by the content of general-purpose register rB, and the result is placed into general-purpose register rD. Both operands are treated as unsigned integers.
+On divide-by zero, rD will be undefined, and the overflow flag will be set.
+*/
+Instruction divu {
+        name = l.divu
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -11----1010
+        sourceRegs = a,b
+        destRegs = d,carry
+}
+
+
+/*
+Extend Byte with Sign
+D[31:8] = A[7]
+D[7:0] = A[7:0]
+Bit 7 of general-purpose register rA is placed in high-order bits of general-purpose register rD. The low-order eight bits of general-purpose register rA are copied into the low-order eight bits of general-purpose register rD.
+*/
+Instruction extbs {
+        name = l.extbs
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0001--1100
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Extend Byte with Zero
+D[31:8] = 0
+D[7:0] = A[7:0]
+Zero is placed in high-order bits of general-purpose register rD. The low-order eight bits of general-purpose register rA are copied into the low-order eight bits of general-purpose register rD.
+*/
+Instruction extbz {
+        name = l.extbz
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0011--1100
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Extend Half Word with Sign
+D[31:16] = A[15]
+D[15:0] = A[15:0]
+Bit 15 of general-purpose register rA is placed in high-order bits of general-purpose register rD. The low-order 16 bits of general-purpose register rA are copied into the low-order 16 bits of general-purpose register rD.
+*/
+Instruction exths {
+        name = l.exths
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0000--1100
+        sourceRegs = a
+        destRegs = d
+}
+
+
+
+
+/*
+Extend Half Word with Zero
+D[31:16] = 0
+D[15:0] = A[15:0]
+Zero is placed in high-order bits of general-purpose register rD. The low-order 16 bits of general-purpose register rA are copied into the low-order 16 bits of general-purpose register rD.
+*/
+Instruction exthz {
+        name = l.exthz
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0010--1100
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Extend Word with Sign
+D[31:0] = A[31:0]
+Bit 31 of general-purpose register rA is placed in high-order bits of general-purpose register rD. The low-order 32 bits of general-purpose register rA are copied from low-order 32 bits of general-purpose register rD.
+*/
+Instruction extws {
+        name = l.extws
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0000--1101
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Extend Word with Zero
+D[31:0] = A[31:0]
+Zero is placed in high-order bits of general-purpose register rD. The low-order 32 bits of general-purpose register rA are copied into the low-order 32 bits of general-purpose register rD.
+*/
+Instruction extwz {
+        name = l.extwz
+        format = ins d,a
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA ------0001--1101
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Find First 1
+Position of the lowest order '1' bit is written into general-purpose register rD. Checking for bit '1' starts with bit 0 (LSB), and counting is incremented for every zero bit. If first '1' bit is discovered in LSB, one is written into rD, if first '1' bit is discovered in MSB, 32 (64) is written into rD. If there is no '1' bit, zero is written in rD.
+*/
+Instruction ff1 {
+        name = l.ff1
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -00----1111
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Find Last 1
+Position of the highest order '1' bit is written into general-purpose register rD. Checking for bit '1' starts with bit 31/63 (MSB), and counting is decremented for every zero bit until the last ‘1’ bit is found nearing the LSB. If highest order '1' bit is discovered in MSB, 32 (64) is written into rD, if highest order '1' bit is discovered in LSB, one is written into rD. If there is no '1' bit, zero is written in rD.
+*/
+Instruction fl1 {
+        name = l.fl1
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -01----1111
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Jump
+PC = T
+The immediate value is shifted left two bits, sign-extended to program counter width, and then added to the address of the jump instruction. The result is the effective address of the jump. The program unconditionally jumps to EA. If CPUCFGR[ND] is not set, the jump occurs with a delay of one instruction.
+Note that l.sys should not be placed in the delay slot after a jump.
+*/
+Instruction j {
+        name = l.j
+        format = ins t
+        disasmFormat = //…
+        binFormat = 000000 TTTTTTTTTTTTTTTTTTTTTTTTTT
+        destRegs = pc
+}
+
+
+/*
+Jump and Link
+LR = PC + 1
+PC = T
+The immediate value is shifted left two bits, sign-extended to program counter width, and then added to the address of the jump instruction. The result is the effective address of the jump. The program unconditionally jumps to EA. If CPUCFGR[ND] is not set, the jump occurs with a delay of one instruction. The address of the instruction after the delay slot is placed in the link register r9 (see Register Usage on page 335).
+The value of the link register, if read as an operand in the delay slot will be the new value, not the old value. If the link register is written in the delay slot, the value written will replace the value stored by the l.jal instruction.
+Note that l.sys should not be placed in the delay slot after a jump.
+*/
+Instruction jal {
+        name = l.jal
+        format = ins t
+        disasmFormat = //…
+        binFormat = 000001 TTTTTTTTTTTTTTTTTTTTTTTTTT
+        destRegs = lr,pc
+}
+
+
+/*
+Jump and Link Register
+LR = PC + 1
+PC = L
+The contents of general-purpose register rB is the effective address of the jump. The program unconditionally jumps to EA. If CPUCFGR[ND] is not set, the jump occurs with a delay of one instruction. The address of the instruction after the delay slot is placed in the link register.
+It is not allowed to specify link register r9 (see Register Usage on page 335) as rB. This is because an exception in the delay slot (including external interrupts) may cause l.jalr to be reexecuted.
+The value of the link register, if read as an operand in the delay slot will be the new value, not the old value. If the link register is written in the delay slot, the value written will replace the value stored by the l.jalr instruction.
+Note that l.sys should not be placed in the delay slot after a jump.
+*/
+Instruction jalr {
+        name = l.jalr
+        format = ins l
+        disasmFormat = //…
+        binFormat = 010010 ---------- LLLLL -----------
+        sourceRegs = l
+        destRegs = lr,pc
+}
+
+
+/*
+Jump Register
+PC = L
+The contents of general-purpose register rB is the effective address of the jump. The program unconditionally jumps to EA. If CPUCFGR[ND] is not set, the jump occurs with a delay of one instruction.
+Note that l.sys should not be placed in the delay slot after a jump.
+*/
+Instruction jr {
+        name = l.jr
+        format = ins l
+        disasmFormat = //…
+        binFormat = 010001 ---------- LLLLL -----------
+        sourceRegs = l
+        destRegs = pc
+}
+
+
+/*
+Load Byte and Extend with Sign
+EA ← exts(Immediate) + rA[31:0]
+rD[7:0] ← (EA)[7:0]
+rD[31:8] ← (EA)[7] 
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The byte in memory addressed by EA is loaded into the low-order eight bits of general-purpose register rD. High-order bits of general purpose register rD are replaced with bit 7 of the loaded value.
+*/
+Instruction lbs {
+        name = l.lbs
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100100 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Byte and Extend with Zero
+EA ← exts(Immediate) + rA[31:0]
+rD[7:0] ← (EA)[7:0]
+rD[31:8] ← 0
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The byte in memory addressed by EA is loaded into the low-order eight bits of general-purpose register rD. High-order bits of general purpose register rD are replaced with zero. 
+*/
+Instruction lbz {
+        name = l.lbz
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100011 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Double Word
+EA ← exts(Immediate) + rA[63:0] 
+rD[63:0] ← (EA)[63:0] 
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The double word in memory addressed by EA is loaded into general-purpose register rD. 
+*/
+/* not implemented in the 32-bit version
+Instruction ld {
+        name = l.ld
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100000 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+*/
+
+
+/*
+Load Half Word and Extend with Sign
+EA ← exts(Immediate) + rA[31:0]
+rD[15:0] ← (EA)[15:0]
+rD[31:16] ← (EA)[15] 
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The half word in memory addressed by EA is loaded into the low-order 16 bits of general-purpose register rD. High-order bits of general purpose register rD are replaced with bit 15 of the loaded value. 
+*/
+Instruction lhs {
+        name = l.lhs
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100110 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Half Word and Extend with Zero
+EA ← exts(Immediate) + rA[31:0] 
+rD[15:0] ← (EA)[15:0] 
+rD[31:16] ← 0
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The half word in memory addressed by EA is loaded into the low-order 16 bits of general-purpose register rD. High-order bits of general purpose register rD are replaced with zero. 
+*/
+Instruction lhz {
+        name = l.lhz
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100101 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Single Word Atomic
+EA ← exts(Immediate) + rA[31:0] 
+rD[31:0] ← (EA)[31:0] 
+atomic_reserve[to_phys(EA)] ← 1
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The single word in memory addressed by EA is loaded into the low-order 32 bits of general-purpose register rD. High-order bits of general-purpose register rD are replaced with zero. 
+An atomic reservation is placed on the address formed from EA. In case an MMU is enabled, the physical translation of EA is used.  
+*/
+Instruction lwa {
+        name = l.lwa
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 011011 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Single Word and Extend with Sign
+EA ← exts(Immediate) + rA[31:0] 
+rD[31:0] ← (EA)[31:0] 
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The single word in memory addressed by EA is loaded into the low-order 32 bits of general-purpose register rD. High-order bits of general-purpose register rD are replaced with bit 31 of the loaded value.   
+*/
+Instruction lws {
+        name = l.lws
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100010 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Load Single Word and Extend with Zero
+EA ← exts(Immediate) + rA[31:0] 
+rD[31:0] ← (EA)[31:0] 
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The single word in memory addressed by EA is loaded into the low-order 32 bits of general-purpose register rD. High-order bits of general-purpose register rD are replaced with zero.    
+*/
+Instruction lwz {
+        name = l.lwz
+        format = ins d,i(l)
+        disasmFormat = //…
+        binFormat = 100001 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = l
+        destRegs = d
+}
+
+
+/*
+Multiply and Accumulate Signed
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the 64 bit result is added to the special-purpose registers MACHI and MACLO. All operands are treated as signed integers.
+The instruction will set the overflow flag if signed overflow is detecting during the addition stage. 
+*/
+Instruction mac {
+        name = l.mac
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 011111 ----- AAAAA BBBBB ------- 0001
+        sourceRegs = a,b
+        destRegs = machi,maclo,overflow
+}
+
+
+/*
+Multiply Immediate and Accumulate Signed
+The immediate value and the contents of general-purpose register rA are multiplied, and the 64 bit result is added to the special-purpose registers MACHI and MACLO. All operands are treated as signed integers.
+The instruction will set the overflow flag if signed overflow is detecting during the addition stage.
+*/
+Instruction maci {
+        name = l.maci
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 001101 ----- AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = machi,maclo,overflow
+}
+
+
+/*
+MAC Read and Clear
+Once all instructions in MAC pipeline are completed, the contents of MAC is placed into general-purpose register rD and MAC accumulator is cleared.
+The MAC pipeline also synchronizes with the instruction pipeline on any access to MACLO or MACHI SPRs, so that l.mfspr can be used to read MACHI before executing l.macrc.
+*/
+Instruction macrc {
+        name = l.macrc
+        format = ins d
+        disasmFormat = //…
+        binFormat = 000110 DDDDD ---- 10000000000000000
+        sourceRegs = maclo
+        destRegs = d,machi,maclo
+}
+
+
+/*
+Memory Synchronization
+Execution of the memory synchronization instruction results in completion of all load/store operations before the RISC core continues.
+*/
+Instruction msync {
+        name = l.msync
+        format = ins
+        disasmFormat = //…
+        binFormat = 00100010000000000000000000000000
+}
+
+
+/*
+Move From Special-Purpose Register
+The contents of the special register, defined by contents of general-purpose rA logically ORed with immediate value, are moved into general-purpose register rD.
+*/
+Instruction mfspr {
+        name = l.mfspr
+        format = ins d,l,x
+        disasmFormat = //…
+        binFormat = 101101 DDDDD LLLLL XXXXXXXXXXXXXXXX
+        sourceRegs = l,spr(l|x)
+        destRegs = d
+}
+
+
+
+
+/*
+Move Immediate High
+The 16-bit immediate value is zero-extended, shifted left by 16 bits, and placed into general-purpose register rD.
+*/
+Instruction movhi {
+        name = l.movhi
+        format = ins d,u
+        disasmFormat = //…
+        binFormat = 00110 DDDDD ---- 0 UUUUUUUUUUUUUUUU
+        destRegs = d
+}
+
+
+/*
+Move To Special-Purpose Register
+The contents of general-purpose register rB are moved into the special register defined by contents of general-purpose register rA logically ORed with the immediate value.
+*/
+Instruction mfspr {
+        name = l.mfspr
+        format = ins l,b,x
+        disasmFormat = //…
+        binFormat = 110000 XXXXX LLLLL BBBBB XXXXXXXXXXX
+        sourceRegs = l,b
+        destRegs = spr(l|x)
+}
+
+
+/*
+Multiply and Accumulate Unsigned
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the 64 bit result is added to the special-purpose registers MACHI and MACLO. All operands are treated as unsigned integers.
+The instruction will set the overflow flag if unsigned overflow is detecting during the addition stage.
+*/
+Instruction macu {
+        name = l.macu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 110001 ----- AAAAA BBBBB -------0011
+        sourceRegs = a,b
+        destRegs = machi,maclo,carry
+}
+
+
+/*
+Multiply and Subtract Signed
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the 64 bit result is subtracted from the special-purpose registers MACHI and MACLO. Result of the subtraction is placed into MACHI and MACLO registers. All operands are treated as signed integers.
+The instruction will set the overflow flag if signed overflow is detecting during the subtraction stage.
+*/
+Instruction msb {
+        name = l.msb
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 110001 ----- AAAAA BBBBB -------0010
+        sourceRegs = a,b
+        destRegs = machi,maclo,overflow
+}
+
+
+/*
+Multiply and Subtract Unsigned
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the 64 bit result is subtracted from the special-purpose registers MACHI and MACLO. Result of the subtraction is placed into MACHI and MACLO registers. All operands are treated as unsigned integers.
+The instruction will set the overflow flag if unsigned overflow is detecting during the subtraction stage.
+*/
+Instruction msbu {
+        name = l.msbu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 110001 ----- AAAAA BBBBB -------0100
+        sourceRegs = a,b
+        destRegs = machi,maclo,carry
+}
+
+
+/*
+Multiply Signed
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the result is truncated to destination register width and placed into general-purpose register rD. Both operands are treated as signed integers.
+The instruction will set the overflow flag on signed overflow.
+*/
+Instruction mul {
+        name = l.mul
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -11----0110
+        sourceRegs = a,b
+        destRegs = d,overflow
+}
+
+
+/*
+Multiply Signed to Double
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the result is stored in the MACHI and MACLO registers. Both operands are treated as signed integers.
+The instruction will set the overflow flag on signed overflow.
+*/
+Instruction muld {
+        name = l.muld
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 111000 ----- AAAAA BBBBB -11----0111
+        sourceRegs = a,b
+        destRegs = machi,maclo,overflow
+}
+
+
+/*
+Multiply Unsigned to Double
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the result is stored in the MACHI and MACLO registers. Both operands are treated as unsigned integers.
+The instruction will set the overflow flag on unsigned overflow.
+*/
+Instruction muldu {
+        name = l.muldu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 111000 ----- AAAAA BBBBB -11----1100
+        sourceRegs = a,b
+        destRegs = machi,maclo,carry
+}
+
+
+/*
+Multiply Immediate Signed
+The immediate value and the contents of general-purpose register rA are multiplied, and the result is truncated to destination register width and placed into general-purpose register rD.
+The instruction will set the overflow flag on signed overflow.
+*/
+Instruction muli {
+        name = l.muli
+        format = ins d,a,i
+        disasmFormat = //…
+        binFormat = 101100 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = d,overflow
+}
+
+
+/*
+Multiply Unsigned
+The contents of general-purpose register rA and the contents of general-purpose register rB are multiplied, and the result is truncated to destination register width and placed into general-purpose register rD. Both operands are treated as unsigned integers.
+The instruction will set the carry flag on unsigned overflow.
+*/
+Instruction mulu {
+        name = l.mulu
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -11----1011
+        sourceRegs = a,b
+        destRegs = d,carry
+}
+
+
+/*
+No Operation
+This instruction does not do anything except that it takes at least one clock cycle to complete. It is often used to fill delay slot gaps. Immediate value can be used for simulation purposes.
+*/
+Instruction nop {
+        name = l.nop
+        format = {ins},{ins u}
+        disasmFormat = //…
+        binFormat = 0010110 -------- UUUUUUUUUUUUUUUU
+}
+
+
+/*
+Or
+The contents of general-purpose register rA are combined with the contents of general-purpose register rB in a bit-wise logical OR operation. The result is placed into general-purpose register rD.
+*/
+Instruction or {
+        name = l.or
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -00----0100
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Or with Immediate Half Word
+The immediate value is zero-extended and combined with the contents of general-purpose register rA in a bit-wise logical OR operation. The result is placed into general-purpose register rD.
+*/
+Instruction ori {
+        name = l.ori
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101010 DDDDD AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Pipeline Synchronization
+Execution of pipeline synchronization instruction results in completion of all instructions that were fetched before l.psync instruction. Once all instructions are completed, instructions fetched after l.psync are flushed from the pipeline and fetched again.
+*/
+Instruction psync {
+        name = l.psync
+        format = ins
+        disasmFormat = //…
+        binFormat = 00100010100000000000000000000000
+}
+
+
+/*
+Return From Exception
+Execution of this instruction partially restores the state of the processor prior to the exception. This instruction does not have a delay slot.
+*/
+Instruction rfe {
+        name = l.rfe
+        format = ins
+        disasmFormat = //…
+        binFormat = 001001--------------------------
+}
+
+
+/*
+Rotate Right
+General-purpose register rB specifies the number of bit positions; the contents of general-purpose register rA are rotated right. The result is written into general-purpose register rD.
+*/
+Instruction ror {
+        name = l.ror
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -11----1000
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Rotate Right with Immediate
+The 6-bit immediate value specifies the number of bit positions; the contents of general-purpose register rA are rotated right. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of immediate is ignored.
+*/
+Instruction rori {
+        name = l.rori
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101110 DDDDD AAAAA -------- 11 UUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Store Byte
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The low-order 8 bits of general-purpose register rB are stored to memory location addressed by EA.
+*/
+Instruction sb {
+        name = l.sb
+        format = ins o(l),a
+        disasmFormat = //…
+        binFormat = 110110 OOOOO LLLLL AAAAA OOOOOOOOOOO
+        sourceRegs = l,a
+}
+
+
+/*
+Store Double Word
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The double word in general-purpose register rB is stored to memory location addressed by EA.
+*/
+/* 64-bit only
+Instruction sd {
+        name = l.sd
+        format = ins o(l),a
+        disasmFormat = //…
+        binFormat = 110100 OOOOO LLLLL AAAAA OOOOOOOOOOO
+        sourceRegs = l,a
+}
+*/
+
+
+/*
+Set Flag if Equal
+The contents of general-purpose registers rA and rB are compared. If the contents are equal, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfeq {
+        name = l.sfeq
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100000 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Equal Immediate
+The contents of general-purpose register rA and the sign-extended immediate value are compared. If the two values are equal, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfeqi {
+        name = l.sfeqi
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111100000 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater or Equal Than Signed
+The contents of general-purpose registers rA and rB are compared as signed integers. If the contents of the first register are greater than or equal to the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfges {
+        name = l.sfges
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100101011 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater or Equal Than Immediate Signed
+The contents of general-purpose register rA and the sign-extended immediate value are compared as signed integers. If the contents of the first register are greater than or equal to the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgesi {
+        name = l.sfgesi
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111101011 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater or Equal Than Unsigned
+The contents of general-purpose registers rA and rB are compared as unsigned integers. If the contents of the first register are greater than or equal to the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgeu {
+        name = l.sfgeu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100011 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater or Equal Than Immediate Unsigned
+The contents of general-purpose register rA and the sign-extended immediate value are compared as unsigned integers. If the contents of the first register are greater than or equal to the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgeui {
+        name = l.sfgeui
+        format = ins a,u
+        disasmFormat = //…
+        binFormat = 10111100011 AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater Than Signed
+The contents of general-purpose registers rA and rB are compared as signed integers. If the contents of the first register are greater than the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgts {
+        name = l.sfgts
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100101010 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater Than Immediate Signed
+The contents of general-purpose register rA and the sign-extended immediate value are compared as signed integers. If the contents of the first register are greater than the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgtsi {
+        name = l.sfgtsi
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111101010 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater Than Unsigned
+The contents of general-purpose registers rA and rB are compared as unsigned integers. If the contents of the first register are greater than the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgtu {
+        name = l.sfgtu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100010 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Greater Than Immediate Unsigned
+The contents of general-purpose register rA and the sign-extended immediate value are compared as unsigned integers. If the contents of the first register are greater than the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfgtui {
+        name = l.sfgtui
+        format = ins a,u
+        disasmFormat = //…
+        binFormat = 10111100010 AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less or Equal Than Signed
+The contents of general-purpose registers rA and rB are compared as signed integers. If the contents of the first register are less than or equal to the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfles {
+        name = l.sfles
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100101101 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less or Equal Than Immediate Signed
+The contents of general-purpose register rA and the sign-extended immediate value are compared as signed integers. If the contents of the first register are less than or equal to the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sflesi {
+        name = l.sflesi
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111101101 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less or Equal Than Unsigned
+The contents of general-purpose registers rA and rB are compared as unsigned integers. If the contents of the first register are less than or equal to the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfleu {
+        name = l.sfleu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100101 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less or Equal Than Immediate Unsigned
+The contents of general-purpose register rA and the sign-extended immediate value are compared as unsigned integers. If the contents of the first register are less than or equal to the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sflesi {
+        name = l.sflesi
+        format = ins a,u
+        disasmFormat = //…
+        binFormat = 10111100101 AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less Than Signed
+The contents of general-purpose registers rA and rB are compared as signed integers. If the contents of the first register are less than the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sflts {
+        name = l.sflts
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100101100 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less Than Immediate Signed
+The contents of general-purpose register rA and the sign-extended immediate value are compared as signed integers. If the contents of the first register are less than the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfltsi {
+        name = l.sfltsi
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111101100 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less Than Unsigned
+The contents of general-purpose registers rA and rB are compared as unsigned integers. If the contents of the first register are less than the contents of the second register, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfltu {
+        name = l.sfltu
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100100 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Less Than Immediate Unsigned
+The contents of general-purpose register rA and the sign-extended immediate value are compared as unsigned integers. If the contents of the first register are less than the immediate value the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfltui {
+        name = l.sfltui
+        format = ins a,u
+        disasmFormat = //…
+        binFormat = 10111100100 AAAAA UUUUUUUUUUUUUUUU
+        sourceRegs = a
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Not Equal
+The contents of general-purpose registers rA and rB are compared. If the contents are not equal, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfne {
+        name = l.sfne
+        format = ins a,b
+        disasmFormat = //…
+        binFormat = 11100100001 AAAAA BBBBB -----------
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Set Flag if Not Equal Immediate
+The contents of general-purpose register rA and the sign-extended immediate value are compared. If the two values are not equal, the compare flag is set; otherwise the compare flag is cleared.
+*/
+Instruction sfnei {
+        name = l.sfnei
+        format = ins a,i
+        disasmFormat = //…
+        binFormat = 10111100001 AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a,b
+        destRegs = flag
+}
+
+
+/*
+Store Half Word
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The low-order 16 bits of general-purpose register rB are stored to memory location addressed by EA.
+*/
+Instruction sh {
+        name = l.sh
+        format = ins o(l),a
+        disasmFormat = //…
+        binFormat = 110111 OOOOO LLLLL AAAAA OOOOOOOOOOO
+        sourceRegs = l,a
+}
+
+
+/*
+Shift Left Logical
+General-purpose register rB specifies the number of bit positions; the contents of general-purpose register rA are shifted left, inserting zeros into the low-order bits. The result is written into general-purpose rD. In 32-bit implementations bit 5 of rB is ignored.
+*/
+Instruction sll {
+        name = l.sll
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -0000--1000
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Shift Left Logical with Immediate
+The immediate value specifies the number of bit positions; the contents of general-purpose register rA are shifted left, inserting zeros into the low-order bits. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of immediate is ignored.
+*/
+Instruction slli {
+        name = l.slli
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101110 DDDDD AAAAA -------- 00 UUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Shift Right Arithmetic
+General-purpose register rB specifies the number of bit positions; the contents of general-purpose register rA are shifted right, sign-extending the high-order bits. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of rB is ignored.
+*/
+Instruction sra {
+        name = l.sra
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -0010--1000
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Shift Right Arithmetic with Immediate
+The 6-bit immediate value specifies the number of bit positions; the contents of general-purpose register rA are shifted right, sign-extending the high-order bits. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of immediate is ignored.
+*/
+Instruction srai {
+        name = l.srai
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101110 DDDDD AAAAA -------- 10 UUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Shift Right Logical
+General-purpose register rB specifies the number of bit positions; the contents of general-purpose register rA are shifted right, inserting zeros into the high-order bits. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of rB is ignored.
+*/
+Instruction srl {
+        name = l.srl
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -0001--1000
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Shift Right Logical with Immediate
+The 6-bit immediate value specifies the number of bit positions; the contents of general-purpose register rA are shifted right, inserting zeros into the high-order bits. The result is written into general-purpose register rD. In 32-bit implementations bit 5 of immediate is ignored.
+*/
+Instruction srli {
+        name = l.srli
+        format = ins d,a,u
+        disasmFormat = //…
+        binFormat = 101110 DDDDD AAAAA -------- 01 UUUUUU
+        sourceRegs = a
+        destRegs = d
+}
+
+
+/*
+Subtract
+The contents of general-purpose register rB are subtracted from the contents of general-purpose register rA to form the result. The result is placed into general-purpose register rD.
+The instruction will set the carry flag on unsigned overflow, and the overflow flag on signed overflow.
+*/
+Instruction sub {
+        name = l.sub
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -0000--0010
+        sourceRegs = a,b
+        destRegs = d,carry,overflow
+}
+
+
+/*
+Store Single Word
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The low-order 32 bits of general-purpose register rB are stored to memory location addressed by EA.
+*/
+Instruction sw {
+        name = l.sw
+        format = ins o(l),a
+        disasmFormat = //…
+        binFormat = 110101 OOOOO LLLLL AAAAA OOOOOOOOOOO
+        sourceRegs = l,a
+}
+
+
+/*
+Store Single Word Atomic
+The offset is sign-extended and added to the contents of general-purpose register rA. The sum represents an effective address. The low-order 32 bits of general-purpose register rB are conditionally stored to memory location addressed by EA. The 'atomic' condition relies on that an atomic reserve to EA is still intact. When the MMU is enabled, the physical translation of EA is used to do the address comparison.
+*/
+Instruction sw {
+        name = l.sw
+        format = ins o(l),a
+        disasmFormat = //…
+        binFormat = 110011 OOOOO LLLLL AAAAA OOOOOOOOOOO
+        sourceRegs = l,a
+        destRegs = atomic
+}
+
+
+/*
+System Call
+Execution of the system call instruction results in the system call exception. The system calls exception is a request to the operating system to provide operating system services. The immediate value can be used to specify which system service is requested, alternatively a GPR defined by the ABI can be used to specify system service.
+Because an l.sys causes an intentional exception, rather than an interruption of normal processing, the matching l.rfe returns to the next instruction. As this is considered to be the jump itself for exceptions occurring in a delay slot, l.sys should not be placed in a delay slot.
+*/
+Instruction sys {
+        name = l.sys
+        format = ins u
+        disasmFormat = //…
+        binFormat = 0010000000000000 UUUUUUUUUUUUUUUU
+}
+
+
+/*
+Trap
+Trap exception is a request to the operating system or to the debug facility to execute certain debug services. Immediate value is used to select which SR bit is tested by trap instruction.
+*/
+Instruction trap {
+        name = l.trap
+        format = ins u
+        disasmFormat = //…
+        binFormat = 0010000100000000 UUUUUUUUUUUUUUUU
+}
+
+
+/*
+Exclusive Or
+The contents of general-purpose register rA are combined with the contents of general-purpose register rB in a bit-wise logical XOR operation. The result is placed into general-purpose register rD.
+*/
+Instruction xor {
+        name = l.xor
+        format = ins d,a,b
+        disasmFormat = //…
+        binFormat = 111000 DDDDD AAAAA BBBBB -0000--0101
+        sourceRegs = a,b
+        destRegs = d
+}
+
+
+/*
+Exclusive Or with Immediate Half Word
+The immediate value is sign-extended and combined with the contents of general-purpose register rA in a bit-wise logical XOR operation. The result is placed into general-purpose register rD.
+*/
+Instruction xori {
+        name = l.xori
+        format = ins d,a,i
+        disasmFormat = //…
+        binFormat = 101011 DDDDD AAAAA IIIIIIIIIIIIIIII
+        sourceRegs = a
+        destRegs = d
+}
