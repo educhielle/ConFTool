@@ -1,13 +1,13 @@
 # ConFTool
 
-ConFTool is a configurable architecture-independent tool that applies state of the art SIHFT techniques [1] to targeted programs by modifying their assembly code.
+ConFTool is a configurable architecture-independent tool that applies state of the art SIHFT techniques [\[1\]](#references) to targeted programs by modifying their assembly code.
 
 Potential uses are:
 * Provide low-cost reliability to microprocessors against soft errors
 * Increase the observability of permanent faults in post-silicon validation
 * Increase the probability of detecting hard errors in deployed devices
 
-This project is the evolution of [2].
+This project is the evolution of [\[2\]](#references).
 
 ## Contents
 
