@@ -24,7 +24,7 @@ Implementing a new format in the configuration files will provide more control o
 
 Add capacity of receiving only a disassembly or a binary file as input. By getting directly from the binary file, we don't need to worry that much with the assembler.
 
-#### Script for Techniques
+#### Scripting Techniques
 
 SIHFT techniques don't need to be hard code in the tool. They can be loaded from script files.
 
